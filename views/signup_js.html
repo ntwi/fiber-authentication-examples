@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<div>
+    <p id="error"></p>
+    <div>
+        <label for="username">Username</label>
+        <input placeholder="Username..." type="text" name="username" id="username">
+    </div>
+
+    <div>
+        <label for="email">E-Mail Address</label>
+        <input placeholder="E-Mail Address..." type="text" name="email" id="email">
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input placeholder="Password..." type="password" name="password" id="password">
+    </div>
+
+    <div>
+        <button type="button" onclick="signUp()">Register</button>
+    </div>
+</div>
+<script>
+    const signUp = () => {
+        let referralUsername = '';
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const params = window.location.pathname.split('/');
+        if (params[params.length - 2] === 'r') {
+            referralUsername = params[params.length - 1];
+        }
+
+        fetch('/api/account/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                email,
+                password,
+                referralUsername
+            })
+        })
+            .then(res => {
+                if (res.status !== 200) {
+                    document.getElementById('error').innerText = 'Invalid credentials';
+                }
+                return res.json();
+            })
+            .then(data => {
+                window.location.href = '/js/login';
+            })
+    }
+</script>
+</body>
+</html>

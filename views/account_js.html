@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Page</title>
+</head>
+<body>
+<h1 id="welcomeMessage"></h1>
+
+<button type="button" onclick="logout()">Log out</button>
+<script>
+    const logout = () => {
+        localStorage.clear();
+        window.location.replace('/js/login');
+    }
+
+    const getUser = () => {
+        fetch('/api/account', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401) {
+                    window.location.href = '/login';
+                }
+                return res.json();
+            })
+            .then(data => {
+                document.getElementById('welcomeMessage').innerText = data.message;
+            })
+    }
+
+    window.onload = () => {
+        getUser();
+    }
+</script>
+</body>
+</html>

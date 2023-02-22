@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "6182f461-da28-49a0-b52a-47ce9c642e38",
+		"name": "RHEV Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23580962"
+	},
+	"item": [
+		{
+			"name": "Get Account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyMzQyMzMyQHRlc3QuY29tIiwiZXhwIjoxNjY0OTM3MjI0LCJ1c2VybmFtZSI6InRlc3QyMzQyMzIzIn0.YGFIz0DiD_nqrnhyUmHMcSggO6SiaKodsr3WqWx-Gusmf5JNCtKudyaDdrKV7194wgw00fns3MaR_9TcMB-fzQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/account/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"account",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"test2342332@test.com\",\n    \"password\":\"test2342323\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/account/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"account",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"test2342323\",\n    \"password\":\"test2342323\",\n    \"email\":\"test2342332@test.com\",\n    \"referralUsername\":\"testfoekpofew\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/account/signup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"account",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
